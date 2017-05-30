@@ -1,0 +1,25 @@
+{
+    "name": "tigrov/yii2-pgsql-enum",
+    "description": "Enum type behavior and helper for Yii2, for PostgreSQL only",
+    "keywords": ["yii2", "extension", "pgsql", "postgres", "postgresql", "enum"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/tigrov/yii2-pgsql-enum"
+    },
+    "authors": [
+        {
+            "name": "Sergei Tigrov",
+            "email": "rrr-r@ya.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "tigrov/yii2-enum": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "tigrov\\pgsql\\enum\\": "src/"
+        }
+    }
+}
