@@ -38,6 +38,8 @@ Once the extension is installed, you can create new enum types as follow:
 ```php
 class NewEnum extends \tigrov\pgsql\enum\EnumBehavior
 {
+    /** @var array list of attributes that are to be automatically humanized value */
+    public $attributes = ['type' => 'type_key'];
 }
 ```
 
@@ -161,6 +163,9 @@ Messenger names:
 ```php
 class MessengerType extends \tigrov\pgsql\enum\EnumBehavior
 {
+    /** @var array list of attributes that are to be automatically humanized value */
+    public $attributes = ['type' => 'type_key'];
+    
     /**
      * Values of Messengers
      * @return array
