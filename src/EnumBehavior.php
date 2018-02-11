@@ -63,9 +63,7 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
         $values = EnumHelper::values(static::typeName());
         foreach ($values as $key) {
             $value = Inflector::humanize($key, true);
-            $list[$key] = static::$messageCategory
-                ? \Yii::t(static::$messageCategory, $value)
-                : $value;
+            $list[$key] = static::t($value);
         }
 
         return $list;
