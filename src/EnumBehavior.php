@@ -23,7 +23,7 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
      */
     public static function typeName()
     {
-        return Inflector::camel2id(StringHelper::basename(static::className()), '_');
+        return Inflector::camel2id(StringHelper::basename(static::class), '_');
     }
 
     /**

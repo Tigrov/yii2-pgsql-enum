@@ -10,6 +10,11 @@ Such types are more difficult to maintain in a project. This extension helps to 
 [![Latest Stable Version](https://poser.pugx.org/Tigrov/yii2-pgsql-enum/v/stable)](https://packagist.org/packages/Tigrov/yii2-pgsql-enum)
 [![Build Status](https://travis-ci.org/Tigrov/yii2-pgsql-enum.svg?branch=master)](https://travis-ci.org/Tigrov/yii2-pgsql-enum)
 
+Limitation
+----------
+
+Since 1.1.0 requires PHP >= 5.5
+
 Installation
 ------------
 
@@ -65,9 +70,9 @@ class Model extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            NewEnum::className(),
+            NewEnum::class,
             // 'type' => [
-            //    'class' => NewEnum::className(),
+            //    'class' => NewEnum::class,
             //    'attributes' => ['type' => 'type_key'],
             //],
         ];
@@ -150,7 +155,7 @@ class Model extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            GenderCode::className(),
+            GenderCode::class,
         ];
     }
 }

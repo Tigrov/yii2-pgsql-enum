@@ -127,7 +127,7 @@ class EnumHelper
 
         if ($newDb === null) {
             $db = static::getDb();
-            $className = $db::className();
+            $className = get_class($db);
             $newDb = new $className;
 
             $class = new \ReflectionClass($db);

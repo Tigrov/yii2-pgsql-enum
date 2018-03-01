@@ -12,9 +12,9 @@ class Enumtypes extends ActiveRecord
     public function behaviors()
     {
         return [
-            'type' => NewEnum::className(),
+            'type' => NewEnum::class,
             'value' => [
-                'class' => NewEnum::className(),
+                'class' => NewEnum::class,
                 'attributes' => ['value' => 'type_key'],
             ],
         ];
