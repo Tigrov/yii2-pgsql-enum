@@ -76,8 +76,11 @@ class EnumHelperTest extends TestCase
         $column = $db->getSchema()->getTableSchema(static::TABLE_NAME)->getColumn('type_key');
         $this->assertSame(['untouched', 'replaced', 'removed', 'not used'], $column->enumValues);
 
-        EnumHelper::remove(NewEnum::typeName(), ['removed', 'replaced' => 'new value', 'not used'], true);
+        EnumHelper::remove(NewEnum::typeName(), 'not used');
+        $column = $db->getSchema()->getTableSchema(static::TABLE_NAME)->getColumn('type_key');
+        $this->assertSame(['untouched', 'replaced', 'removed'], $column->enumValues);
 
+        EnumHelper::remove(NewEnum::typeName(), ['removed', 'replaced' => 'new value'], true);
         $column = $db->getSchema()->getTableSchema(static::TABLE_NAME)->getColumn('type_key');
         $this->assertSame(['untouched', 'new value'], $column->enumValues);
 

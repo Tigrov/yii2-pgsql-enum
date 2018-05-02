@@ -106,8 +106,8 @@ class EnumHelper
      * Remove values from an enum type
      *
      * @param string $typeName name of the enum type
-     * @param array $values values for removing
-     * It is a list of values to be removed e.g. ['value1', 'value2']
+     * @param string|array $values values for removing
+     * It is a value (e.g. 'value1') or list of values (e.g. ['value1', 'value2']) to be removed,
      * the removed values will be replaced with null values.
      * Or a list of key => value pairs if you need to replace the removing values with new values
      * where keys are the removing values and values are the new values
@@ -119,6 +119,8 @@ class EnumHelper
      */
     public static function remove($typeName, $values, $updateTables = false)
     {
+        $values = (array) $values;
+
         $db = static::getDb();
         $transaction = $db->beginTransaction();
         try {

@@ -107,15 +107,18 @@ $newModel = Model::findOne($model->id);
 $newModel->type_key === 'value1';
 $newModel->type === 'Value1'; // see yii\helpers\Inflector::humanize($word, true)
 
-// The extension will try to add new value if it does not exist
+// The extension will try to add a new value if it does not exist
 $model->type_key = 'non-existent value';
 $model->save();
 
 // To get all enum values
 NewEnum::values();
 
-// To add new value to the enum type
+// To add a new value to the enum type
 NewEnum::add('new value');
+
+// To remove a value from the enum type
+NewEnum::remove('new value');
 
 // To check if the enum type exists
 NewEnum::exists();

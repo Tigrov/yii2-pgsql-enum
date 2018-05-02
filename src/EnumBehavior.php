@@ -82,8 +82,8 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
     /**
      * Remove values from the enum type
      *
-     * @param array $values values for removing
-     * It is a list of values to be removed e.g. ['value1', 'value2']
+     * @param string|array $values a value or values for removing
+     * It is a value (e.g. 'value1') or list of values (e.g. ['value1', 'value2']) to be removed,
      * the removed values will be replaced with null values.
      * Or a list of key => value pairs if you need to replace the removing values with new values
      * where keys are the removing values and values are the new values
