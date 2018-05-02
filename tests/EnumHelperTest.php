@@ -49,11 +49,9 @@ class EnumHelperTest extends TestCase
         }
 
         // test add before
-        foreach (static::$addValuesBefore as $value) {
-            EnumHelper::add(static::TEST_TYPE, $value, static::TEST_BEFORE);
-            array_splice($values, array_search(static::TEST_BEFORE, $values), 0, $value);
-            $this->assertSame($values, EnumHelper::values(static::TEST_TYPE));
-        }
+        EnumHelper::add(static::TEST_TYPE, static::$addValuesBefore, static::TEST_BEFORE);
+        array_splice($values, array_search(static::TEST_BEFORE, $values), 0, static::$addValuesBefore);
+        $this->assertSame($values, EnumHelper::values(static::TEST_TYPE));
     }
 
     /**

@@ -48,12 +48,13 @@ class EnumHelper
      * Add a value to an enum type
      *
      * @param string $typeName name of the enum type
-     * @param string $value new value for adding
+     * @param string|string[] $values new value or values for adding
      * @param string|null $before the value will be placed before
-     * @return int number of rows affected by the execution.
      */
-    public static function add($typeName, $value, $before = null)
+    public static function add($typeName, $values, $before = null)
     {
+        $values = (array) $values;
+
         $db = static::getDb();
         if ($db->getTransaction()) {
             // It cannot add a value during a transaction.
@@ -61,11 +62,16 @@ class EnumHelper
             $db = static::newConnection();
         }
 
-        return $db->createCommand(
-            'ALTER TYPE ' . $db->quoteColumnName($typeName)
-            . ' ADD VALUE IF NOT EXISTS ' . $db->quoteValue($value)
-            . ($before !== null ? ' BEFORE ' . $db->quoteValue($before) : '')
-        )->execute();
+        $query = 'ALTER TYPE ' . $db->quoteColumnName($typeName)
+            . ' ADD VALUE IF NOT EXISTS ';
+
+        $beforeQuery = $before !== null
+            ? ' BEFORE ' . $db->quoteValue($before)
+            : '';
+
+        foreach ($values as $value) {
+            $db->createCommand($query . $db->quoteValue($value) . $beforeQuery)->execute();
+        }
     }
 
     /**
