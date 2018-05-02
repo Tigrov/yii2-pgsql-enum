@@ -80,6 +80,26 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
     }
 
     /**
+     * Remove values from the enum type
+     *
+     * @param array $values values for removing
+     * It is a list of values to be removed e.g. ['value1', 'value2']
+     * the removed values will be replaced with null values.
+     * Or a list of key => value pairs if you need to replace the removing values with new values
+     * where keys are the removing values and values are the new values
+     * e.g. ['removing value 1' => 'new value 1', 'removing value 2' => 'new value 2']
+     * In this case the removing values will be changed to the new values.
+     * If the new values are not exist in the enum type they will be added.
+     * @param bool $updateTables indicates if required to replace the enum values in all tables with the enum type
+     * before removing.
+     * @throws \Exception
+     */
+    public static function remove($values, $updateTables = false)
+    {
+        return EnumHelper::remove(static::typeName(), $values, $updateTables);
+    }
+
+    /**
      * Drop the enum type
      *
      * @param bool $cascade if true, automatically drop objects that depend on the type (such as table columns, functions, operators).

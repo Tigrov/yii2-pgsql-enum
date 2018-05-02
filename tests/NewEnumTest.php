@@ -78,6 +78,15 @@ class NewEnumTest extends TestCase
     /**
      * @depends testAddInTransaction
      */
+    public function testRemove()
+    {
+        NewEnum::remove(array_merge(static::$addValues, static::$addValuesBefore, ['new_value']));
+        $this->assertSame(static::$resultValues, NewEnum::values());
+    }
+
+    /**
+     * @depends testRemove
+     */
     public function testDrop()
     {
         $this->assertTrue(NewEnum::exists());
