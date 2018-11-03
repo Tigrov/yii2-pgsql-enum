@@ -142,11 +142,12 @@ class GenderCode extends \tigrov\pgsql\enum\EnumBehavior
 
     /**
      * Values of genders
+     * @param bool $addEmpty add empty value first
      * @return array
      */
-    public static function values()
+    public static function values($addEmpty = false)
     {
-        return [
+        return ($addEmpty ? ['' => static::emptyValue()] : []) + [
             'M' => \Yii::t('enum', 'Male'),
             'F' => \Yii::t('enum', 'Female'),
         ];
@@ -176,11 +177,12 @@ class MessengerType extends \tigrov\pgsql\enum\EnumBehavior
     
     /**
      * Values of Messengers
+     * @param bool $addEmpty add empty value first
      * @return array
      */
-    public static function values()
+    public static function values($addEmpty = false)
     {
-        return [
+        return ($addEmpty ? ['' => static::emptyValue()] : []) + [
             'skype' => 'Skype',
             'whatsapp' => 'WhatsApp',
             'viber' => 'Viber',

@@ -16,7 +16,7 @@
     "require": {
         "php": ">=5.5.0",
         "yiisoft/yii2": "~2.0.0",
-        "tigrov/yii2-enum": "~1.0"
+        "tigrov/yii2-enum": "~1.2"
     },
     "repositories": [
         {

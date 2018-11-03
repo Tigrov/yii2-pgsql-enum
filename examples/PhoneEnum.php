@@ -22,9 +22,9 @@ class PhoneEnum extends EnumBehavior
     /**
      * @inheritdoc
      */
-    public static function values()
+    public static function values($addEmpty = false)
     {
-        $values = parent::values();
+        $values = parent::values($addEmpty);
 
         $values[static::SIP] = 'SIP';
 
