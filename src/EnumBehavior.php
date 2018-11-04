@@ -54,10 +54,10 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
 
     /**
      * Get values of the enum type
-     * @param bool $addEmpty add empty value first
+     * @param bool $withEmpty with empty value at first
      * @return array values of the enum type
      */
-    public static function values($addEmpty = false) {
+    public static function values($withEmpty = false) {
         $list = [];
 
         $values = EnumHelper::values(static::typeName());
@@ -66,7 +66,7 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
             $list[$key] = static::t($value);
         }
 
-        return ($addEmpty ? ['' => static::emptyValue()] : []) + $list;
+        return ($withEmpty ? ['' => static::emptyValue()] : []) + $list;
     }
 
     /**

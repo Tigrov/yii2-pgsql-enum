@@ -18,19 +18,18 @@ class MessengerEnum extends EnumBehavior
     const AIM = 'aim';
     const EBUDDY = 'ebuddy';
     const YAHOO = 'yahoo';
-    const OTHER = 'other';
 
     /** @var array list of attributes that are to be automatically detected value */
     public $attributes = ['type' => 'type_key'];
 
     /**
      * Values of Messengers
-     * @param bool $addEmpty add empty value first
+     * @param bool $withEmpty with empty value at first
      * @return array
      */
-    public static function values($addEmpty = false)
+    public static function values($withEmpty = false)
     {
-        $values = parent::values($addEmpty);
+        $values = parent::values($withEmpty);
 
         // Correct some display values
         $values[static::WHAPSAPP] = 'WhatsApp';
@@ -39,8 +38,15 @@ class MessengerEnum extends EnumBehavior
         $values[static::BLACKBERRY] = 'BlackBerry';
         $values[static::AIM] = 'AIM';
         $values[static::EBUDDY] = 'eBuddy';
-        $values[static::OTHER] = \Yii::t('app', $values[static::OTHER]);
 
         return $values;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function emptyValue()
+    {
+        return \Yii::t('app', 'Messenger');
     }
 }

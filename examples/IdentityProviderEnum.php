@@ -16,12 +16,12 @@ class IdentityProviderEnum extends EnumBehavior
 
     /**
      * Values of Identity Providers
-     * @param bool $addEmpty add empty value first
+     * @param bool $withEmpty with empty value at first
      * @return array
      */
-    public static function values($addEmpty = false)
+    public static function values($withEmpty = false)
     {
-        $values = parent::values($addEmpty);
+        $values = parent::values($withEmpty);
 
         // Correct some display values
         $values[static::LINKEDIN] = 'LinkedIn';
