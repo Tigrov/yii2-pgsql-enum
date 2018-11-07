@@ -45,11 +45,22 @@ abstract class EnumBehavior extends \tigrov\enum\EnumBehavior
      *
      * @param string $value new value for adding
      * @param string|null $before the value will be placed before
-     * @return int number of rows affected by the execution.
      */
     public static function add($value, $before = null)
     {
-        return EnumHelper::add(static::typeName(), $value, $before);
+        EnumHelper::add(static::typeName(), $value, $before);
+    }
+
+    /**
+     * Rename value of the enum type
+     *
+     * @param string $value old value to be renamed
+     * @param string $newValue new value
+     * @return int number of rows affected by the execution.
+     */
+    public static function renameValue($value, $newValue)
+    {
+        return EnumHelper::renameValue(static::typeName(), $value, $newValue);
     }
 
     /**

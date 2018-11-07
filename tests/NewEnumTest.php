@@ -78,9 +78,19 @@ class NewEnumTest extends TestCase
     /**
      * @depends testAddInTransaction
      */
+    public function testRenameValue()
+    {
+        NewEnum::renameValue('new_value', 'renamed_value');
+        $this->assertFalse(NewEnum::has('new_value'));
+        $this->assertTrue(NewEnum::has('renamed_value'));
+    }
+
+    /**
+     * @depends testRenameValue
+     */
     public function testRemove()
     {
-        NewEnum::remove(array_merge(static::$addValues, static::$addValuesBefore, ['new_value']));
+        NewEnum::remove(array_merge(static::$addValues, static::$addValuesBefore, ['renamed_value']));
         $this->assertSame(static::$resultValues, NewEnum::values());
     }
 

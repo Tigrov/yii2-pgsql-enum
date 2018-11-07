@@ -200,6 +200,24 @@ class EnumHelper
     }
 
     /**
+     * Rename an enum value
+     *
+     * @param string $typeName name of the enum type
+     * @param string $value old value to be renamed
+     * @param string $newValue new value
+     * @return int number of rows affected by the execution.
+     */
+    public static function renameValue($typeName, $value, $newValue)
+    {
+        $db = static::getDb();
+
+        return $db->createCommand(
+            'ALTER TYPE ' . $db->quoteColumnName($typeName)
+            . ' RENAME VALUE ' . $db->quoteValue($value) . ' TO ' . $db->quoteValue($newValue)
+        )->execute();
+    }
+
+    /**
      * Try to recreate an enum type with new values
      *
      * @param string $typeName name of the enum type

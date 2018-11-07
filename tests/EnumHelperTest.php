@@ -133,6 +133,15 @@ class EnumHelperTest extends TestCase
     /**
      * @depends testRecreate
      */
+    public function testRenameValue()
+    {
+        EnumHelper::renameValue(static::TEST_TYPE, 'value2', 'renamed value');
+        $this->assertSame(['value1', 'renamed value'], EnumHelper::values(static::TEST_TYPE));
+    }
+
+    /**
+     * @depends testRecreate
+     */
     public function testDrop()
     {
         EnumHelper::drop(static::TEST_TYPE);

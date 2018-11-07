@@ -15,6 +15,8 @@ Limitation
 
 Since 1.1.0 requires PHP >= 5.5
 
+For method `renameValue()` requires PostgreSQL >= 10.0  
+
 Installation
 ------------
 
@@ -117,8 +119,11 @@ NewEnum::values();
 // To add a new value to the enum type
 NewEnum::add('new value');
 
+// To rename a value of the enum type
+NewEnum::renameValue('new value', 'renamed value');
+
 // To remove a value from the enum type
-NewEnum::remove('new value');
+NewEnum::remove('renamed value');
 
 // To check if the enum type exists
 NewEnum::exists();
