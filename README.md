@@ -113,11 +113,20 @@ $newModel->type === 'Value1'; // see yii\helpers\Inflector::humanize($word, true
 $model->type_key = 'non-existent value';
 $model->save();
 
-// To get all enum values
+// To get all enum values in [value => humanized value] array notation
 NewEnum::values();
+
+// To get all enum values without humanized values in [value1, value2, ...] array notation
+NewEnum::codes();
 
 // To add a new value to the enum type
 NewEnum::add('new value');
+
+// To get a humanized value
+NewEnum::value('new value'); // returns "New Value" or translated value
+
+// To check if the enum type has a value
+NewEnum::has('new value');
 
 // To rename a value of the enum type
 NewEnum::renameValue('new value', 'renamed value');
